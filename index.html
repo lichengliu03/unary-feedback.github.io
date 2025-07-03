@@ -323,6 +323,18 @@
             max-width: 50%;
         }
 
+        .figure.teaser {
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+
+        .figure.teaser img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
         .figure-caption {
             margin-top: 1rem;
             font-size: 0.9rem;
@@ -708,13 +720,13 @@
                 <h1>Let's Try Again: Eliciting Multi-Turn Reasoning in Language Models via Simplistic Feedback</h1>
                 
                 <div class="authors">
-                    <div class="author"><a href="#" target="_blank">Licheng Liu<span class="superscript">1</span><span class="asterisk">*</span></a></div>
+                    <div class="author"><a href="https://lichengliu03.github.io/" target="_blank">Licheng Liu<span class="superscript">1</span><span class="asterisk">*</span></a></div>
                     <div class="author"><a href="https://zihanwang314.github.io/" target="_blank">Zihan Wang<span class="superscript">2</span><span class="asterisk">*</span></a></div>
-                    <div class="author"><a href="#" target="_blank">Linjie Li<span class="superscript">3</span></a></div>
-                    <div class="author"><a href="#" target="_blank">Chenwei Xu<span class="superscript">2</span></a></div>
-                    <div class="author"><a href="#" target="_blank">Yiping Lu<span class="superscript">2</span></a></div>
-                    <div class="author"><a href="#" target="_blank">Han Liu<span class="superscript">2</span></a></div>
-                    <div class="author"><a href="#" target="_blank">Avirup Sil<span class="superscript">4</span></a></div>
+                    <div class="author"><a href="https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en" target="_blank">Linjie Li<span class="superscript">3</span></a></div>
+                    <div class="author"><a href="https://chenwei-1999.github.io/" target="_blank">Chenwei Xu<span class="superscript">2</span></a></div>
+                    <div class="author"><a href="https://2prime.github.io/" target="_blank">Yiping Lu<span class="superscript">2</span></a></div>
+                    <div class="author"><a href="https://scholar.google.com/citations?user=XaFT1o4AAAAJ&hl=zh-CN" target="_blank">Han Liu<span class="superscript">2</span></a></div>
+                    <div class="author"><a href="https://research.ibm.com/people/avi-sil" target="_blank">Avirup Sil<span class="superscript">4</span></a></div>
                     <div class="author"><a href="https://limanling.github.io/" target="_blank">Manling Li<span class="superscript">2</span></a></div>
                 </div>
                 
@@ -737,13 +749,25 @@
         </div>
     </header>
 
+    <!-- Teaser Image Section -->
+    <section class="section" style="padding: 2rem 0;">
+        <div class="container">
+            <div class="figure teaser">
+                <img src="assets/img/teaser.png" alt="UFO Method Teaser" style="max-width: 100%; margin: 2rem auto;">
+                <div class="figure-caption">
+                    <strong> An example of using single-turn RL model for multi-turn problem solving. </strong> Model loses multi-turn capability, producing identical reasoning chains across interaction turns after being prompted that its answer is incorrect.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Abstract Section -->
     <section class="section">
         <div class="container">
             <div class="abstract">
                 <h3>Abstract</h3>
                 <p>
-                    Large language models often struggle with multi-turn reasoning, especially when trained with single-turn reinforcement learning paradigms. We identify that the lack of effective feedback in multi-turn scenarios leads to repetitive and suboptimal responses. To address this, we propose Unary Feedback as Observation (UFO), a simple yet powerful method that leverages minimal user feedback, such as “Let’s try again”, to guide models during iterative problem solving. Our approach can be seamlessly integrated into existing RL frameworks and significantly improves multi-turn reasoning accuracy by 14%, while maintaining single-turn performance. UFO demonstrates that even the simplest feedback can unlock more robust and interactive reasoning abilities in language models.
+                    Large language models often struggle with multi-turn reasoning, especially when trained with single-turn reinforcement learning paradigms. We identify that the lack of effective feedback in multi-turn scenarios leads to repetitive and suboptimal responses. To address this, we propose Unary Feedback as Observation (UFO), a simple yet powerful method that leverages minimal user feedback, such as "Let's try again", to guide models during iterative problem solving. Our approach can be seamlessly integrated into existing RL frameworks and significantly improves multi-turn reasoning accuracy by 14%, while maintaining single-turn performance. UFO demonstrates that even the simplest feedback can unlock more robust and interactive reasoning abilities in language models.
                 </p>
             </div>
 
@@ -768,7 +792,7 @@
                 We address the challenge that single-turn reinforcement learning (RL) often fails to endow language models with multi-turn reasoning abilities, leading to repetitive and unadaptive responses. Our approach, <strong>Unary Feedback as Observation (UFO)</strong>, reformulates multi-turn problem solving as a Markov Decision Process (MDP) using only static single-turn datasets and minimal feedback.
             </p>
             <p>
-                In UFO, the model interacts over multiple turns, receiving only negative feedback (e.g., “Try Again”) after incorrect answers. The observation at each step concatenates the original question, all previous attempts, and their feedback, requiring the model to revise its reasoning based solely on a history of failed attempts. This design enables multi-turn training without the need for dense supervision or tool-augmented environments.
+                In UFO, the model interacts over multiple turns, receiving only negative feedback (e.g., "Try Again") after incorrect answers. The observation at each step concatenates the original question, all previous attempts, and their feedback, requiring the model to revise its reasoning based solely on a history of failed attempts. This design enables multi-turn training without the need for dense supervision or tool-augmented environments.
             </p>
             <p>
                 We optimize the model using Proximal Policy Optimization (PPO), with two key reward shaping strategies: <em>reward decay</em> (to encourage early success) and a <em>repetition penalty</em> (to promote answer diversity). This framework allows the model to develop revision-aware, context-sensitive reasoning strategies, unlocking robust multi-turn capabilities from static datasets and minimal supervision.
@@ -894,7 +918,7 @@
             </p>
             
             <h3>Acknowledgement</h3>
-        <p>We thank all the contributors to this research and the institutions that supported this work. </p>
+        <p>We thank the <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank">DeepSeek</a> team for providing the DeepSeek-R1 model and early conceptual inspirations. We are grateful to the <a href="https://github.com/volcengine/verl" target="_blank">veRL</a> team for their infrastructure support and the <a href="https://github.com/RAGEN-AI/RAGEN" target="_blank">RAGEN</a> team for their multi-turn RL framework.</p>
 
 
         </div>
