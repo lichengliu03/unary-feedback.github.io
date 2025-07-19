@@ -750,7 +750,7 @@
     </header>
 
     <div style="background-color: #f2f2f2; padding: 10px 20px; border-radius: 6px; font-size: 14px; text-align: center; margin-bottom: 20px;">
-      This website is maintained by the first author, who co-designed and conducted the experiments, drafted the initial paper, and released the code/models. Currently applying to Ph.D. programs (Fall 2026).
+      This website is maintained by the first author. Currently applying to Ph.D. programs (Fall 2026).
     </div>
     
     <!-- Teaser Image Section -->
@@ -759,7 +759,7 @@
             <div class="figure teaser">
                 <img src="assets/img/teaser.png" alt="UFO Method Teaser" style="max-width: 100%; margin: 2rem auto;">
                 <div class="figure-caption">
-                    <strong> An example of using single-turn RL model for multi-turn problem solving. </strong> Model loses multi-turn capability, producing identical reasoning chains across interaction turns after being prompted that its answer is incorrect.
+                    <strong> Single-turn RL causes LLMs to repeat the same answer across turns instead of revising based on feedback. </strong>
                 </div>
             </div>
         </div>
@@ -771,7 +771,7 @@
             <div class="abstract">
                 <h3>Abstract</h3>
                 <p>
-                    Large language models often struggle with multi-turn reasoning, especially when trained with single-turn reinforcement learning paradigms. We identify that the lack of effective feedback in multi-turn scenarios leads to repetitive and suboptimal responses. To address this, we propose Unary Feedback as Observation (UFO), a simple yet powerful method that leverages minimal user feedback, such as "Let's try again", to guide models during iterative problem solving. Our approach can be seamlessly integrated into existing RL frameworks and significantly improves multi-turn reasoning accuracy by 14%, while maintaining single-turn performance. UFO demonstrates that even the simplest feedback can unlock more robust and interactive reasoning abilities in language models.
+                    Current RL methods for LLMs focus on single-turn optimization, but struggle with multi-turn reasoning where models must revise answers based on feedback. We introduce Unary Feedback as Observation (UFO), a simple approach that trains models using minimal feedback like "try again" to improve iterative problem solving. UFO enhances multi-turn reasoning accuracy by up to 14% while preserving single-turn performance, enabling better adaptation to user feedback across multiple interaction rounds.
                 </p>
             </div>
 
@@ -779,7 +779,7 @@
             <div class="figure medium">
                 <img src="assets/img/unique_answer_ratio_comparison.png" alt="Unique Answer Ratio Comparison" style="max-width: 120%;">
                 <div class="figure-caption">
-                    <strong>Figure 1.</strong> Comparison of effective (unique) answer ratio (%) before and after RL training. Across single-turn RL methods, the unique answer ratio consistently drops after training across multiple model scales.
+                    <strong>Figure 1.</strong> Comparison of effective answer ratio (%) before and after RL training. Single-turn RL methods consistently reduce answer diversity, while our UFO method maintains high diversity across turns.
                 </div>
             </div>
         </div>
@@ -805,7 +805,7 @@
             <div class="figure">
                 <img src="assets/img/flow_chart.png" alt="UFO Multi-turn Training Framework" style="max-width:120%; margin-left:-10%; margin-right:-10%;">
                 <div class="figure-caption">
-                    <strong>Figure 2.</strong> Multi-turn training framework of UFO showing how models learn from unary feedback during iterative problem-solving processes.
+                    <strong>Figure 2. The UFO framework for multi-turn training.</strong> At each step <em>t</em>, the model observes the full interaction history and generates a response. Correct responses receive discounted rewards γ<sup>t</sup>, while incorrect ones receive none. A repetition penalty based on the uniqueness of trajectory 𝜏 is applied after success or when the turn limit is reached.
                 </div>
             </div>
         </div>
