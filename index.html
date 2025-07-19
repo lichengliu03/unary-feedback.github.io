@@ -771,7 +771,7 @@
             <div class="abstract">
                 <h3>Abstract</h3>
                 <p>
-                    Large language models often struggle with multi-turn reasoning, especially when trained with single-turn reinforcement learning paradigms. We identify that the lack of effective feedback in multi-turn scenarios leads to repetitive and suboptimal responses. To address this, we propose Unary Feedback as Observation (UFO), a simple yet powerful method that leverages minimal user feedback, such as "Let's try again", to guide models during iterative problem solving. Our approach can be seamlessly integrated into existing RL frameworks and significantly improves multi-turn reasoning accuracy by 14%, while maintaining single-turn performance. UFO demonstrates that even the simplest feedback can unlock more robust and interactive reasoning abilities in language models.
+                    Current RL methods for LLMs focus on single-turn optimization, but struggle with multi-turn reasoning where models must revise answers based on feedback. We introduce Unary Feedback as Observation (UFO), a simple approach that trains models using minimal feedback like "try again" to improve iterative problem solving. UFO enhances multi-turn reasoning accuracy by up to 14% while preserving single-turn performance, enabling better adaptation to user feedback across multiple interaction rounds.
                 </p>
             </div>
 
@@ -779,7 +779,7 @@
             <div class="figure medium">
                 <img src="assets/img/unique_answer_ratio_comparison.png" alt="Unique Answer Ratio Comparison" style="max-width: 120%;">
                 <div class="figure-caption">
-                    <strong>Figure 1.</strong> Comparison of effective (unique) answer ratio (%) before and after RL training. Across single-turn RL methods, the unique answer ratio consistently drops after training across multiple model scales.
+                    <strong>Figure 1.</strong> Comparison of effective answer ratio (%) before and after RL training. Single-turn RL methods consistently reduce answer diversity, while our UFO method maintains high diversity across turns.
                 </div>
             </div>
         </div>
@@ -805,7 +805,7 @@
             <div class="figure">
                 <img src="assets/img/flow_chart.png" alt="UFO Multi-turn Training Framework" style="max-width:120%; margin-left:-10%; margin-right:-10%;">
                 <div class="figure-caption">
-                    <strong>Figure 2.</strong> Multi-turn training framework of UFO showing how models learn from unary feedback during iterative problem-solving processes.
+                    <strong>Figure 2. The UFO framework for multi-turn training.</strong> At each step <em>t</em>, the model observes the full interaction history and generates a response. Correct responses receive discounted rewards γ<sup>t</sup>, while incorrect ones receive none. A repetition penalty based on the uniqueness of trajectory 𝜏 is applied after success or when the turn limit is reached.
                 </div>
             </div>
         </div>
